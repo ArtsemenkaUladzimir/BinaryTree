@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{F9FADD4E-9A5F-469B-8FF0-A130E82E2906}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{D0AC766B-BA47-4910-AE4B-AEAA38D912BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0AC766B-BA47-4910-AE4B-AEAA38D912BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AC766B-BA47-4910-AE4B-AEAA38D912BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AC766B-BA47-4910-AE4B-AEAA38D912BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AC766B-BA47-4910-AE4B-AEAA38D912BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9FADD4E-9A5F-469B-8FF0-A130E82E2906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9FADD4E-9A5F-469B-8FF0-A130E82E2906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9FADD4E-9A5F-469B-8FF0-A130E82E2906}.Release|Any CPU.ActiveCfg = Release|Any CPU
