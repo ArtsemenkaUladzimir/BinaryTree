@@ -18,8 +18,9 @@ namespace Tests
 		}
 
 		[Test ()]
-		public void TestCase ()
+		public void CapasityTest ()
 		{
+			Assert.AreEqual (2, tree.Capasity);
 		}
 	}
 }

@@ -25,7 +25,7 @@ namespace Entity
 					return -1;
 
 				var objBinaryTreeNode = obj as BinaryTreeNode;
-				return this.data.CompareTo (objBinaryTreeNode.data);
+				return data.CompareTo (objBinaryTreeNode.data);
 			}
 
 			#endregion
@@ -39,19 +39,15 @@ namespace Entity
 		public void Add(T value) 
 		{
 			var item = new BinaryTreeNode (value);
-			if (item == null)
-				return;
 
-			item.left = null;
-			item.right = null;
-			
 			if (head == null) {
 				head = item;
+				Capasity++;
 				return;
 			}
 
 			var tmp = head;
-			while (tmp == null) {
+			while (tmp != null) {
 				if (tmp.CompareTo (item) < 0) {
 					if (tmp.left == null) {
 						tmp.left = item;
