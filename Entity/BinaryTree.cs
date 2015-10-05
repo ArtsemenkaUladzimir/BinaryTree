@@ -21,16 +21,18 @@ namespace Entity
 
 			var tmp = head;
 			while (tmp == null) {
-				if (tmp.CompareTo (item) < 0 && tmp.left == null) {
-					tmp.left = item;
-					return;
-				} else {
+				if (tmp.CompareTo (item) < 0) {
+					if (tmp.left == null) {
+						tmp.left = item;
+						return;
+					}
 					tmp = tmp.left;
-				}
-				if (tmp.CompareTo (item) >= 0 && tmp.right == null) {
-					tmp.right = item;
-					return;
+					continue;
 				} else {
+					if (tmp.right == null) {
+						tmp.right = item;
+						return;
+					}
 					tmp = tmp.right;
 				}
 			}
