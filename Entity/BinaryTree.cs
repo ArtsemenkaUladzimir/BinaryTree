@@ -94,29 +94,15 @@ namespace Entity
 					head = cur.left;
 					return true;
 				}
-//				if (parent.CompareTo (cur) < 0)
-//					parent.right = cur.left;
-//				else
-//					parent.left = cur.left;
-//				return true;
 				return ReplaceChild (parent, cur, cur.left);
 
 			} else {
 				if (cur.right.left == null) {
 					cur.right.left = cur.left;
-//					if (parent.CompareTo (cur) < 0)
-//						parent.right = cur.right;
-//					else
-//						parent.left = cur.right;
-//					return true;
 					return ReplaceChild (parent, cur, cur.right);
 
 				} else {
 					tmp = FindMostLeftWithParent (cur.right, out tmpParent);
-//					if (tmpParent.CompareTo (tmp) < 0)
-//						tmpParent.right = tmp.right;
-//					else
-//						tmpParent.left = tmp.right;
 					ReplaceChild (tmpParent, tmp, tmp.right);
 					tmp.left = cur.left;
 					tmp.right = cur.right;
