@@ -6,7 +6,7 @@ namespace Entity
 	public class BinaryTree<T> : IEnumerable<T> where T : IComparable
 	{
 		public BinaryTreeNode head { get; private set; }
-		public int Capasity { get; private set; }
+		public int Capacity { get; private set; }
 
 		#region BinaryTreeNode
 
@@ -32,6 +32,11 @@ namespace Entity
 				return data.CompareTo (objBinaryTreeNode.data);
 			}
 
+			public int CompareTo (T obj)
+			{
+				return data.CompareTo (obj);
+			}
+
 			#endregion
 		}
 
@@ -43,34 +48,35 @@ namespace Entity
 
 			if (head == null) {
 				head = item;
-				Capasity++;
+				Capacity++;
 				return;
 			}
 
 			var cur = head;
 			while (cur != null) {
 				if (cur.CompareTo (item) < 0) {
-					if (cur.left == null) {
-						cur.left = item;
-						Capasity++;
-						return;
-					}
-					cur = cur.left;
-					continue;
-				} else {
 					if (cur.right == null) {
 						cur.right = item;
-						Capasity++;
+						Capacity++;
 						return;
 					}
 					cur = cur.right;
+					continue;
+				} else {
+					if (cur.left == null) {
+						cur.left = item;
+						Capacity++;
+						return;
+					}
+					cur = cur.left;
 				}
 			}
 		}
 
 		public bool Contains(T value)
 		{
-			throw new NotImplementedException ();
+			BinaryTreeNode parent;
+			return FindWithParent (value, out parent) != null;
 		}
 
 		public bool Remove(T value) 
@@ -81,7 +87,7 @@ namespace Entity
 
 			if (cur == null)
 				return false;
-			Capasity--;
+			Capacity--;
 
 			if (cur.right == null) {
 				if (parent == null) {
@@ -114,9 +120,20 @@ namespace Entity
 					ReplaceChild (tmpParent, tmp, tmp.right);
 					tmp.left = cur.left;
 					tmp.right = cur.right;
-					return ReplaceChild (parent, tmp, tmp);
+					return ReplaceChild (parent, cur, tmp);
 				}
 			}
+		}
+
+		public void Clear() 
+		{
+			head = null;
+			Capacity = 0;
+		}
+
+		public void PreOrderTraversal(Action<BinaryTreeNode> action)
+		{
+			PreOrderTraversal (action, head);
 		}
 
 		#region IEnumerable implementation
@@ -131,16 +148,28 @@ namespace Entity
 		}
 		#endregion
 
-		public void Clear() 
-		{
-			throw new NotImplementedException ();
-		}
-
 		#region private function
 
 		private BinaryTreeNode FindWithParent(T value, out BinaryTreeNode parent)
 		{
-			throw new NotImplementedException ();
+			BinaryTreeNode cur = head;
+			parent = null;
+
+			while (cur != null) {
+				if (cur.CompareTo (value) < 0) {
+					parent = cur;
+					cur = cur.right;
+					continue;
+				}
+				if (cur.CompareTo (value) > 0) {
+					parent = cur;
+					cur = cur.left;
+					continue;
+				}
+				return cur;
+			}
+
+			return cur;
 		}
 
 		private BinaryTreeNode FindMostLeftWithParent(BinaryTreeNode node, out BinaryTreeNode parent)
@@ -155,6 +184,15 @@ namespace Entity
 			else
 				parent.left = newChild;
 			return true;
+		}
+
+		private void PreOrderTraversal(Action<BinaryTreeNode> action, BinaryTreeNode node)
+		{
+			if (node != null) {
+				action (node);
+				PreOrderTraversal (action, node.left);
+				PreOrderTraversal (action, node.right);
+			}
 		}
 
 		#endregion
