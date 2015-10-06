@@ -1,5 +1,0 @@
-/Users/vladimir/Applications/epam/BinaryTree/Entity/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/vladimir/Applications/epam/BinaryTree/Entity/bin/Debug/Entity.dll.mdb
-/Users/vladimir/Applications/epam/BinaryTree/Entity/bin/Debug/Entity.dll
-/Users/vladimir/Applications/epam/BinaryTree/Entity/obj/Debug/Entity.dll
-/Users/vladimir/Applications/epam/BinaryTree/Entity/obj/Debug/Entity.dll.mdb
