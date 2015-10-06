@@ -38,6 +38,11 @@ namespace Entity
 			}
 
 			#endregion
+
+			public override string ToString ()
+			{
+				return string.Format ("[BinaryTreeNode: data={0}]", data);
+			}
 		}
 
 		#endregion

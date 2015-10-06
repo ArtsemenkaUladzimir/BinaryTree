@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Entity/Entity.csproj">
+﻿<Properties StartupItem="VisualTree/VisualTree.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Entity/BinaryTree.cs">
     <Files>
