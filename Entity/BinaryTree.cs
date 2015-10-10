@@ -41,7 +41,7 @@ namespace Entity
 
 			public override string ToString ()
 			{
-				return string.Format ("[BinaryTreeNode: data={0}]", data);
+				return string.Format ("{0} ", data);
 			}
 		}
 
@@ -94,13 +94,18 @@ namespace Entity
 				return false;
 			Capacity--;
 
-			if (cur.right == null) {
-				if (parent == null) {
-					head = cur.left;
-					return true;
+			if (parent == null) {
+				if (cur.right != null) {
+					LeftRotation (cur, ref parent);
+				} else if (cur.left != null) {
+					RightRotation (cur, ref parent);
+				} else {
+					head = null;
 				}
-				return ReplaceChild (parent, cur, cur.left);
+			}
 
+			if (cur.right == null) {
+				return ReplaceChild (parent, cur, cur.left);
 			} else {
 				if (cur.right.left == null) {
 					cur.right.left = cur.left;
@@ -122,7 +127,7 @@ namespace Entity
 			Capacity = 0;
 		}
 
-		public void PreOrderTraversal(Action<BinaryTreeNode> action)
+		public void PreOrderTraversal(Action<Object> action)
 		{
 			PreOrderTraversal (action, head);
 		}
@@ -165,22 +170,62 @@ namespace Entity
 
 		private BinaryTreeNode FindMostLeftWithParent(BinaryTreeNode node, out BinaryTreeNode parent)
 		{
-			throw new NotImplementedException ();
+			BinaryTreeNode cur = node;
+			parent = null;
+
+			while (cur != null) {
+				if (cur.left != null) {
+					parent = cur;
+					cur = cur.left;
+				} else {
+					break;
+				}
+			}
+
+			return cur;
 		}
 
 		private bool ReplaceChild(BinaryTreeNode parent, BinaryTreeNode oldChild, BinaryTreeNode newChild)
 		{
-			if (parent.CompareTo (oldChild) < 0)
+			if (parent == null) {
+				head = newChild;
+				return true;
+			}
+
+			if (parent.CompareTo (oldChild) < 0) 
 				parent.right = newChild;
 			else
 				parent.left = newChild;
 			return true;
 		}
 
-		private void PreOrderTraversal(Action<BinaryTreeNode> action, BinaryTreeNode node)
+		private void LeftRotation(BinaryTreeNode node, ref BinaryTreeNode parent)
 		{
+			var tmp = node.right;
+			node.right = node.right.left;
+			tmp.left = node;
+
+			ReplaceChild (parent, node, tmp);
+			parent = parent ?? head;
+		}
+
+		private void RightRotation(BinaryTreeNode node, ref BinaryTreeNode parent)
+		{
+			var tmp = node.left;
+			node.left = node.left.right;
+			tmp.right = node;
+
+			ReplaceChild (parent, node, tmp);
+			parent = parent ?? head;
+		}
+
+		private void PreOrderTraversal(Action<Object> action, BinaryTreeNode node)
+		{
+			action (node);
+			if (node == null) {
+				action("null ");
+			}
 			if (node != null) {
-				action (node);
 				PreOrderTraversal (action, node.left);
 				PreOrderTraversal (action, node.right);
 			}

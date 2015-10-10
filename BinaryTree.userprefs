@@ -1,9 +1,10 @@
-﻿<Properties StartupItem="VisualTree/VisualTree.csproj">
+﻿<Properties StartupItem="VisualTree/VisualTree.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Entity/BinaryTree.cs">
     <Files>
-      <File FileName="Entity/BinaryTree.cs" Line="22" Column="5" />
-      <File FileName="Tests/Test.cs" Line="1" Column="1" />
+      <File FileName="Entity/BinaryTree.cs" Line="102" Column="12" />
+      <File FileName="Tests/Test.cs" Line="15" Column="4" />
+      <File FileName="VisualTree/Program.cs" Line="17" Column="19" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">

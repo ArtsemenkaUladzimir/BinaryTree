@@ -40,6 +40,13 @@ namespace Tests
 			tree.Remove (12);
 			Assert.AreEqual (2, tree.Capacity);
 		}
+
+		[Test]
+		public void RemoveHead()
+		{
+			tree.Remove (9);
+			Assert.AreEqual (3, tree.Capacity);
+		}
 	}
 }
 
