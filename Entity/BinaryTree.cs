@@ -121,6 +121,19 @@ namespace Entity
 			}
 		}
 
+		public void InsertRoot(T value)
+		{
+			var item = new BinaryTreeNode (value);
+
+			if (head == null) {
+				head = item;
+				Capacity++;
+				return;
+			}
+
+			InsertRoot (item, head, null);
+		}
+
 		public void Clear() 
 		{
 			head = null;
@@ -217,6 +230,25 @@ namespace Entity
 
 			ReplaceChild (parent, node, tmp);
 			parent = parent ?? head;
+		}
+
+		private void InsertRoot(BinaryTreeNode value, BinaryTreeNode root, BinaryTreeNode parentRoot)
+		{
+			if (root.CompareTo (value) < 0) {
+				if (root.right == null) {
+					root.right = value;
+				} else {
+					InsertRoot (value, root.right, root);
+				}
+				LeftRotation (root, ref parentRoot);
+			} else {
+				if (root.left == null) {
+					root.left = value;
+				} else {
+					InsertRoot (value, root.left, root);
+				}
+				RightRotation (root, ref parentRoot);
+			}
 		}
 
 		private void PreOrderTraversal(Action<Object> action, BinaryTreeNode node)

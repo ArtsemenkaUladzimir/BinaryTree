@@ -2,13 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Entity/BinaryTree.cs">
     <Files>
-      <File FileName="Entity/BinaryTree.cs" Line="102" Column="12" />
-      <File FileName="Tests/Test.cs" Line="15" Column="4" />
-      <File FileName="VisualTree/Program.cs" Line="17" Column="19" />
+      <File FileName="Entity/BinaryTree.cs" Line="101" Column="30" />
+      <File FileName="Tests/Test.cs" Line="48" Column="39" />
+      <File FileName="VisualTree/Program.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State name="__root__">
+          <Node name="BinaryTree" expanded="True" selected="True" />
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
