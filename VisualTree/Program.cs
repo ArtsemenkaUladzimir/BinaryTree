@@ -14,7 +14,7 @@ namespace VisualTree
 			tree.Add (20);
 			tree.Add (11);
 			tree.Add (19);
-			tree.InsertRoot (7);
+			tree.InsertRoot (16);
 			tree.PreOrderTraversal (Console.Write);
 		}
 	}
